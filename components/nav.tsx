@@ -8,12 +8,23 @@ import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import { ModeToggle } from '@/components/dropdown'
 import { ChevronRight, Droplets, LogOut } from "lucide-react"
+import { useEffect } from 'react'
 
 export function Nav() {
   const { open } = useWeb3Modal()
   const { address } = useAccount()
   const pathname = usePathname()
 
+  useEffect(() => {
+    // Check for support first.
+    if (navigator.setAppBadge) {
+      Notification.requestPermission().then((result) => {
+        console.log(result);
+      });
+      // Just display the badge, with no number in it.
+      navigator.setAppBadge();
+    }
+  }, [])
   return (
     <nav className='
     border-b flex
@@ -29,7 +40,7 @@ export function Nav() {
           <p className={`ml-2 mr-4 text-lg font-semibold`}>lenscn</p>
         </Link>
         <Link href="/" className={`mr-5 text-sm ${pathname !== '/' && 'opacity-50'}`}>
-          <p>风中追风的主页</p>
+          <p>Home</p>
         </Link>
         <Link href="/search" className={`mr-5 text-sm ${pathname !== '/search' && 'opacity-60'}`}>
           <p>Search</p>
@@ -49,7 +60,7 @@ export function Nav() {
       '>
         {
           !address && (
-            <Button onClick={() => open()} variant="secondary" className="mr-4">
+            <Button onClick={() => open()} variant="destructive" className="mr-4">
           Connect Wallet
           <ChevronRight className="h-4 w-4" />
         </Button>
@@ -57,8 +68,8 @@ export function Nav() {
         }
         {
           address && (
-            <Button onClick={disconnect} variant="secondary" className="mr-4">
-            Disconnect
+            <Button onClick={disconnect} variant="ghost" className="mr-4">
+            {`${address.slice(0,5)}****${address.slice(38)}`}
             <LogOut className="h-4 w-4 ml-3" />
           </Button>
           )

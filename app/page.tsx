@@ -1,5 +1,5 @@
 'use client'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import {
   useExploreProfiles,
   useExplorePublications,
@@ -45,7 +45,32 @@ export default function Home() {
     limit: LimitType.TwentyFive,
     orderBy: ExploreProfilesOrderByType.MostFollowers
   }) as any
+  const handleInstall = (e: any) => {
+    e.preventDefault()
 
+  }
+  useEffect(() => {
+    let installPrompt: any = null;
+    const installButton = document.querySelector("#install")!;
+    window.addEventListener("beforeinstallprompt", (event) => {
+      event.preventDefault();
+      installPrompt = event;
+      installButton.removeAttribute("hidden");
+    });
+    installButton.addEventListener("click", async () => {
+      if (!installPrompt) {
+        return;
+      }
+      const result = await installPrompt.prompt();
+      console.log(`Install prompt was: ${result.outcome}`);
+      installPrompt = null;
+      installButton.setAttribute("hidden", "");
+    });
+    window.addEventListener("appinstalled", () => {
+      installPrompt = null;
+      installButton.setAttribute("hidden", "");
+    });
+  }, [])
   let { data: musicPubs, loading: loadingMusicPubs } = useExplorePublications({
     limit: LimitType.TwentyFive,
     orderBy: ExplorePublicationsOrderByType.TopCommented,
@@ -78,12 +103,13 @@ export default function Home() {
   
   return (
     <main className="
-      px-6 py-14
+      px-6 py-12
       sm:px-10
     ">
       <div>
+        <button id="install" onClick={handleInstall} hidden  className='rounded-lg max-w-[150px] flex py-1 px-4 mb-2 bg-[#f9c] text-[#fff]' style={{margin: '0 auto 18px auto' }}>Install</button>
         <a target="_blank" rel="no-opener" href="https://lens.xyz">
-        <div className="cursor-pointer flex items-center bg-secondary text-foreground rounded-lg py-1 px-3 mb-2 max-w-[288px]">
+        <div className="cursor-pointer flex items-center bg-secondary text-foreground rounded-lg py-1 px-3 mb-5 max-w-[288px]">
           <p className='mr-2'>📚</p>
           <p className="text-sm">
           Learn more about Lens Protocol.
