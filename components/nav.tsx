@@ -16,13 +16,15 @@ export function Nav() {
   const pathname = usePathname()
 
   useEffect(() => {
-    // Check for support first.
-    if (navigator.setAppBadge) {
-      Notification.requestPermission().then((result) => {
-        console.log(result);
-      });
-      // Just display the badge, with no number in it.
-      navigator.setAppBadge();
+    if (navigator) {
+      // Check for support first.
+      if (navigator.setAppBadge) {
+        Notification.requestPermission().then((result) => {
+          console.log(result);
+        });
+        // Just display the badge, with no number in it.
+        navigator.setAppBadge(1);
+      }
     }
   }, [])
   return (
@@ -37,7 +39,7 @@ export function Nav() {
       >
         <Link href="/" className='mr-5 flex items-center'>
           <Droplets className="opacity-85" size={19} />
-          <p className={`ml-2 mr-4 text-lg font-semibold`}>lenscn</p>
+          <p className={`ml-2 mr-4 text-lg font-semibold`}>higher</p>
         </Link>
         <Link href="/" className={`mr-5 text-sm ${pathname !== '/' && 'opacity-50'}`}>
           <p>Home</p>
