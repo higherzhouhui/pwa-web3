@@ -45,34 +45,38 @@ export default function Home() {
     limit: LimitType.TwentyFive,
     orderBy: ExploreProfilesOrderByType.MostFollowers
   }) as any
+  
   const handleInstall = (e: any) => {
     e.preventDefault()
-
   }
   useEffect(() => {
-    try {
-      let installPrompt: any = null;
-      const installButton = document.querySelector("#install")!;
-      window.addEventListener("beforeinstallprompt", (event) => {
-        event.preventDefault();
-        installPrompt = event;
-        installButton.removeAttribute("hidden");
-      });
-      installButton.addEventListener("click", async () => {
-        if (!installPrompt) {
-          return;
-        }
-        const result = await installPrompt.prompt();
-        console.log(`Install prompt was: ${result.outcome}`);
-        installPrompt = null;
-        installButton.setAttribute("hidden", "");
-      });
-      window.addEventListener("appinstalled", () => {
-        installPrompt = null;
-        installButton.setAttribute("hidden", "");
-      });
-    } catch (error) {
-      console.log(error)
+    if (!window || !document) {
+      return
+    } else {
+      try {
+        let installPrompt: any = null;
+        const installButton = document.querySelector("#install")!;
+        window.addEventListener("beforeinstallprompt", (event) => {
+          event.preventDefault();
+          installPrompt = event;
+          installButton.removeAttribute("hidden");
+        });
+        installButton.addEventListener("click", async () => {
+          if (!installPrompt) {
+            return;
+          }
+          const result = await installPrompt.prompt();
+          console.log(`Install prompt was: ${result.outcome}`);
+          installPrompt = null;
+          installButton.setAttribute("hidden", "");
+        });
+        window.addEventListener("appinstalled", () => {
+          installPrompt = null;
+          installButton.setAttribute("hidden", "");
+        });
+      } catch (error) {
+        console.log(error)
+      }
     }
   }, [])
   let { data: musicPubs, loading: loadingMusicPubs } = useExplorePublications({
