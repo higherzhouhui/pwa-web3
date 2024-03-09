@@ -1,7 +1,7 @@
 import { createWeb3Modal, defaultWagmiConfig } from '@web3modal/wagmi/react'
 
 import { WagmiConfig } from 'wagmi'
-import { arbitrum, mainnet } from 'wagmi/chains'
+import { bsc, arbitrum, mainnet } from 'wagmi/chains'
 
 const projectId = process.env.NEXT_PUBLIC_WC_ID || 'e72d746a6792f5d3428e42892f52a725'
 
@@ -12,7 +12,7 @@ const metadata = {
   icons: ['https://avatars.githubusercontent.com/u/37784886']
 }
 
-const chains = [mainnet, arbitrum]
+const chains = [bsc, mainnet, arbitrum]
 const wagmiConfig = defaultWagmiConfig({ chains, projectId, metadata })
 
 createWeb3Modal({ wagmiConfig, projectId, chains })

@@ -70,10 +70,7 @@ export function Nav() {
         }
         {
           address && (
-            <Button onClick={disconnect} variant="secondary" className="mr-4">
-            {jiAddress}
-            <LogOut className="h-4 w-4 ml-3" />
-          </Button>
+            <w3m-button />
           )
         }
         

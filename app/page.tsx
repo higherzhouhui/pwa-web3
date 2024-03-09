@@ -82,11 +82,13 @@ export default function Home() {
       sm:px-10
     ">
       <div>
-        <a target="_blank" rel="no-opener" href="https://lens.xyz">
+        <a target="_blank" rel="no-opener" href="https://tokentool.app/createWallet/bnb">
         <div className="cursor-pointer flex items-center bg-secondary text-foreground rounded-lg py-1 px-3 mb-2 max-w-[288px]">
           <p className='mr-2'>📚</p>
           <p className="text-sm">
-          Learn more about Lens Protocol.
+          不使用外部钱包是在用户注册的时候分配一个后台脚本生成的钱包，
+          将生成的钱包信息存储在数据库中，充值到该钱包地址后点击刷新，后台去获取一下该地址balance，录入到数据库中上分；提现的话导出私钥给到用户，自行变现
+          无法做到将与钱包的交互集成在PWA应用中
           </p>
           <ArrowRight className='ml-2' size={14} />
         </div>
