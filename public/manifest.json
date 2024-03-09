@@ -1,11 +1,11 @@
 {
-  "name": "Lens PWA",
-  "short_name": "Lens PWA ",
+  "name": "REACT-PWA",
+  "short_name": "REACT-PWA",
   "icons": [
     {
       "src": "images/icons/iconmain-128x128.png",
       "sizes": "128x128",
-      "type": "image/png" 
+      "type": "image/png"
     },
     {
       "src": "images/icons/iconmain-512x512.png",
@@ -17,5 +17,7 @@
   "background_color": "#ffffff",
   "display": "standalone",
   "scope": "/",
-  "theme_color": "#1a1a1a"
+  "theme_color": "#1a1a1a",
+  "id": "20240309001",
+  "description": "web3区块链defi"
 }
