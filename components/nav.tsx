@@ -8,25 +8,12 @@ import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import { ModeToggle } from '@/components/dropdown'
 import { ChevronRight, Droplets, LogOut } from "lucide-react"
-import { useEffect } from 'react'
 
 export function Nav() {
   const { open } = useWeb3Modal()
   const { address } = useAccount()
   const pathname = usePathname()
 
-  useEffect(() => {
-    if (navigator) {
-      // Check for support first.
-      if (navigator.setAppBadge) {
-        Notification.requestPermission().then((result) => {
-          console.log(result);
-        });
-        // Just display the badge, with no number in it.
-        navigator.setAppBadge(1);
-      }
-    }
-  }, [])
   return (
     <nav className='
     border-b flex
