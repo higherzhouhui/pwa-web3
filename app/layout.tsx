@@ -20,7 +20,6 @@ export default function RootLayout({ children }) {
       <link rel="icon" href="/images/icons/iconmain-512x512.png" />
       <meta name="theme-color" content="#000000" />
       <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-      <title>REACT-PWA-WEB3</title>
       <body>
         <Web3ModalProvider>
           <LensProvider>

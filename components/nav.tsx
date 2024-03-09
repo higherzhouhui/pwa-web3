@@ -26,10 +26,10 @@ export function Nav() {
       >
         <Link href="/" className='mr-5 flex items-center'>
           <Droplets className="opacity-85" size={19} />
-          <p className={`ml-2 mr-4 text-lg font-semibold`}>higher</p>
+          <p className={`ml-2 mr-4 text-lg font-semibold`}>lenscn</p>
         </Link>
         <Link href="/" className={`mr-5 text-sm ${pathname !== '/' && 'opacity-50'}`}>
-          <p>Home</p>
+          <p>风中追风的主页</p>
         </Link>
         <Link href="/search" className={`mr-5 text-sm ${pathname !== '/search' && 'opacity-60'}`}>
           <p>Search</p>
@@ -49,7 +49,7 @@ export function Nav() {
       '>
         {
           !address && (
-            <Button onClick={() => open()} variant="destructive" className="mr-4">
+            <Button onClick={() => open()} variant="secondary" className="mr-4">
           Connect Wallet
           <ChevronRight className="h-4 w-4" />
         </Button>
@@ -57,8 +57,8 @@ export function Nav() {
         }
         {
           address && (
-            <Button onClick={disconnect} variant="ghost" className="mr-4">
-            {`${address.slice(0,5)}****${address.slice(38)}`}
+            <Button onClick={disconnect} variant="secondary" className="mr-4">
+            Disconnect
             <LogOut className="h-4 w-4 ml-3" />
           </Button>
           )
