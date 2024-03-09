@@ -86,12 +86,11 @@ export default function Home() {
         <div className="cursor-pointer flex items-center bg-secondary text-foreground rounded-lg py-1 px-3 mb-2 max-w-[288px]">
           <p className='mr-2'>📚</p>
           <p className="text-sm">
-          不使用外部钱包是在用户注册的时候分配一个后台脚本生成的钱包，
-          将生成的钱包信息存储在数据库中，充值到该钱包地址后点击刷新，后台去获取一下该地址balance，录入到数据库中上分；提现的话导出私钥给到用户，自行变现
-          无法做到将与钱包的交互集成在PWA应用中
+            使用React、PWA、Web3技术栈，可实现在浏览器端安装该应用到桌面（Android机下没问题）
           </p>
           <ArrowRight className='ml-2' size={14} />
         </div>
+        </a>
         <div>
           <img src='/images/2.png' />
           <p className='text-center border mt-4 mb-5'>转出提供私钥</p>
@@ -105,6 +104,15 @@ export default function Home() {
           <p className='text-center border mt-4 mb-5'>跳转第三方,充值后推送余额</p>
           <img src='/images/5.png' />
           <p className='text-center border mt-4 mb-5'>给钱包地址转账后手动/推送刷新</p>
+        </div>
+        <a target="_blank" rel="no-opener" href="https://tokentool.app/createWallet/bnb">
+        <div className="cursor-pointer flex items-center bg-secondary text-foreground rounded-lg py-1 px-3 mb-2 max-w-[388px]">
+          <p className="text-sm">
+            <b>与Frenpet与turnup可实现相同功能；</b><br/>
+            1、用户注册后自动分配一个钱包地址；<br/>
+            2、充值时可以跳转第三方钱包发起转账；<br/>
+            3、用户提现时提供私钥自行变现<br/>
+          </p>
         </div>
         </a>
         <h1 className="text-5xl font-bold mt-3">
