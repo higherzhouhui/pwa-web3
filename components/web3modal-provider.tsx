@@ -3,7 +3,7 @@ import { createWeb3Modal, defaultWagmiConfig } from '@web3modal/wagmi/react'
 import { WagmiConfig } from 'wagmi'
 import { arbitrum, mainnet } from 'wagmi/chains'
 
-const projectId = process.env.NEXT_PUBLIC_WC_ID || 'test-project-id'
+const projectId = process.env.NEXT_PUBLIC_WC_ID || 'e72d746a6792f5d3428e42892f52a725'
 
 const metadata = {
   name: 'Web3Modal',
