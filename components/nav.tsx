@@ -8,12 +8,25 @@ import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import { ModeToggle } from '@/components/dropdown'
 import { ChevronRight, Droplets, LogOut } from "lucide-react"
+import { useEffect, useState } from 'react'
 
 export function Nav() {
   const { open } = useWeb3Modal()
   const { address } = useAccount()
   const pathname = usePathname()
-
+  const [jiAddress, setJiAddress] = useState('Disconnect')
+  const handleAddress = () => {
+    if (address) {
+      let _address = address.toString()
+      _address = _address.slice(0,5) + '****' + _address.slice(38)
+      setJiAddress(_address)
+    } else {
+      setJiAddress('Disconnect')
+    }
+  }
+  useEffect(() => {
+    handleAddress()
+  }, [address])
   return (
     <nav className='
     border-b flex
@@ -26,10 +39,10 @@ export function Nav() {
       >
         <Link href="/" className='mr-5 flex items-center'>
           <Droplets className="opacity-85" size={19} />
-          <p className={`ml-2 mr-4 text-lg font-semibold`}>lenscn</p>
+          <p className={`ml-2 mr-4 text-lg font-semibold`}>风中追风</p>
         </Link>
         <Link href="/" className={`mr-5 text-sm ${pathname !== '/' && 'opacity-50'}`}>
-          <p>风中追风的主页</p>
+          <p>Home</p>
         </Link>
         <Link href="/search" className={`mr-5 text-sm ${pathname !== '/search' && 'opacity-60'}`}>
           <p>Search</p>
@@ -58,7 +71,7 @@ export function Nav() {
         {
           address && (
             <Button onClick={disconnect} variant="secondary" className="mr-4">
-            Disconnect
+            {jiAddress}
             <LogOut className="h-4 w-4 ml-3" />
           </Button>
           )
