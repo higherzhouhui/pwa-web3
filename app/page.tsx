@@ -92,6 +92,20 @@ export default function Home() {
           </p>
           <ArrowRight className='ml-2' size={14} />
         </div>
+        <div>
+          <img src='/images/2.png' />
+          <p className='text-center border mt-4 mb-5'>转出提供私钥</p>
+          <img src='/images/1.png' />
+          <p className='text-center border mt-4 mb-5'>充值跳转</p>
+          <img src='/images/4.png' />
+          <p className='text-center border mt-4 mb-5'>充值</p>
+          <img src='/images/6.png' />
+          <p className='text-center border mt-4 mb-5'>充值提供选择钱包</p>
+          <img src='/images/3.png' />
+          <p className='text-center border mt-4 mb-5'>跳转第三方,充值后推送余额</p>
+          <img src='/images/5.png' />
+          <p className='text-center border mt-4 mb-5'>给钱包地址转账后手动/推送刷新</p>
+        </div>
         </a>
         <h1 className="text-5xl font-bold mt-3">
           Social Explorer
